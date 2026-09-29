@@ -1,0 +1,111 @@
+# ============================================
+# Apache конфигурация для поддомена lgdemo.loragate.uz
+# ============================================
+# Объединяет React Router маршрутизацию с поддержкой API
+# ============================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # ============================================
+  # CORS настройки (критично для работы API)
+  # ============================================
+  <IfModule mod_headers.c>
+    # Для демо-режима разрешаем все источники
+    # Для production можно указать конкретный домен: "https://lgdemo.loragate.uz"
+    # ВАЖНО: Если используете конкретный домен, убедитесь, что он совпадает с протоколом (http/https)
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept"
+    Header always set Access-Control-Allow-Credentials "true"
+    Header always set Access-Control-Max-Age "3600"
+  </IfModule>
+  
+  # Обработка preflight запросов (OPTIONS)
+  RewriteCond %{REQUEST_METHOD} OPTIONS
+  RewriteRule ^(.*)$ $1 [R=200,L]
+  
+  # ============================================
+  # API маршрутизация (ВАЖНО: должно быть ПЕРЕД React Router правилами)
+  # ============================================
+  # Исключаем API и backend из обработки React Router
+  RewriteCond %{REQUEST_URI} ^/(api|backend)/ [NC]
+  RewriteRule ^ - [L]
+  
+  # ============================================
+  # Разрешаем доступ к статическим файлам
+  # ============================================
+  # Разрешаем доступ к файлам с расширениями (CSS, JS, изображения и т.д.)
+  RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json|xml|txt|pdf|zip|map|webp|avif|jpg|jpeg)$ [NC]
+  RewriteRule ^ - [L]
+  
+  # Разрешаем доступ к директориям со статическими ресурсами
+  RewriteCond %{REQUEST_URI} ^/(assets|icons|images)/ [NC]
+  RewriteRule ^ - [L]
+  
+  # ============================================
+  # React Router маршрутизация
+  # ============================================
+  # Не перенаправляем index.html
+  RewriteRule ^index\.html$ - [L]
+  
+  # Если запрашивается существующий файл - отдаем как есть
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+  
+  # Если запрашивается существующая директория - отдаем как есть
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Все остальные запросы направляем на index.html для React Router
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# ============================================
+# Сжатие ответов
+# ============================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# ============================================
+# Кэширование браузера
+# ============================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+# ============================================
+# Заголовки безопасности
+# ============================================
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================
+# Защита конфигурационных файлов
+# ============================================
+<FilesMatch "\.(sql|log|env|git|md|bak|backup|old)$">
+  <IfVersion < 2.4>
+    Order Deny,Allow
+    Deny from all
+  </IfVersion>
+  <IfVersion >= 2.4>
+    Require all denied
+  </IfVersion>
+</FilesMatch>

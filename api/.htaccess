@@ -1,0 +1,12 @@
+# Разрешаем CORS для API запросов
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "POST, OPTIONS, GET"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Разрешаем выполнение PHP
+<IfModule mod_php.c>
+    php_flag engine on
+</IfModule>
+

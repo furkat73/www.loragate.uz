@@ -1,0 +1,31 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="192" height="192" rx="24" fill="#0d6efd"/>
+  
+  <!-- Иконка термометра -->
+  <g transform="translate(48, 48)">
+    <!-- Корпус термометра -->
+    <rect x="24" y="8" width="8" height="64" rx="4" fill="#ffffff"/>
+    <!-- Резервуар -->
+    <circle cx="28" cy="80" r="12" fill="#ffffff"/>
+    <!-- Шкала -->
+    <line x1="40" y1="16" x2="44" y2="16" stroke="#ffffff" stroke-width="2"/>
+    <line x1="40" y1="24" x2="44" y2="24" stroke="#ffffff" stroke-width="2"/>
+    <line x1="40" y1="32" x2="44" y2="32" stroke="#ffffff" stroke-width="2"/>
+    <line x1="40" y1="40" x2="44" y2="40" stroke="#ffffff" stroke-width="2"/>
+    <line x1="40" y1="48" x2="44" y2="48" stroke="#ffffff" stroke-width="2"/>
+    <line x1="40" y1="56" x2="44" y2="56" stroke="#ffffff" stroke-width="2"/>
+    <line x1="40" y1="64" x2="44" y2="64" stroke="#ffffff" stroke-width="2"/>
+    <!-- Столбик ртути -->
+    <rect x="26" y="32" width="4" height="40" rx="2" fill="#dc3545"/>
+  </g>
+  
+  <!-- Иконка капли (влажность) -->
+  <g transform="translate(96, 48)">
+    <path d="M24 8C24 8 16 24 16 40C16 48.8366 23.1634 56 32 56C40.8366 56 48 48.8366 48 40C48 24 40 8 40 8L32 0L24 8Z" fill="#17a2b8"/>
+  </g>
+  
+  <!-- Текст -->
+  <text x="96" y="140" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">PHARMA</text>
+  <text x="96" y="158" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">MONITOR</text>
+</svg>

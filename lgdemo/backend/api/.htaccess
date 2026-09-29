@@ -1,0 +1,55 @@
+# Правила для демо-режима
+# Скопируйте этот файл в .htaccess для автоматического переключения на демо-версии
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Перенаправление на демо-версии API
+    RewriteCond %{REQUEST_URI} ^/backend/api/auth/login\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/auth/demo-login.php [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/sensors/(current|smart-current|smart-user-current)\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/sensors/demo-current.php [L]
+    
+    # Разрешаем прямой доступ к history.php (не перенаправляем, используем напрямую)
+    RewriteCond %{REQUEST_URI} ^/backend/api/sensors/history\.php$ [NC]
+    RewriteRule ^ - [L]
+    
+    # Разрешаем прямой доступ к user-history.php (не перенаправляем)
+    RewriteCond %{REQUEST_URI} ^/backend/api/sensors/user-history\.php$ [NC]
+    RewriteRule ^ - [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/groups/index\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/groups/demo-index.php [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/groups/sensors\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/groups/demo-sensors.php [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/users/current\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/users/demo-current.php [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/alerts/index\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/alerts/demo-index.php [L]
+    
+    # Перенаправление для verification-check.php
+    RewriteCond %{REQUEST_URI} ^/backend/api/devices/verification-check\.php$ [NC]
+    RewriteRule ^(.*)$ /backend/api/devices/verification-check.php [L]
+    
+    # Разрешаем прямой доступ к simple-test.php и test.php (не перенаправляем)
+    RewriteCond %{REQUEST_URI} ^/backend/api/(simple-test|test)\.php$ [NC]
+    RewriteRule ^ - [L]
+    
+    # Разрешаем прямой доступ к новым endpoints (не перенаправляем)
+    RewriteCond %{REQUEST_URI} ^/backend/api/groups/user-groups-list\.php$ [NC]
+    RewriteRule ^ - [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/events/index\.php$ [NC]
+    RewriteRule ^ - [L]
+    
+    RewriteCond %{REQUEST_URI} ^/backend/api/sensors/thresholds\.php$ [NC]
+    RewriteRule ^ - [L]
+    
+    # Разрешаем прямой доступ к user-sensors.php
+    RewriteCond %{REQUEST_URI} ^/backend/api/sensors/user-sensors\.php$ [NC]
+    RewriteRule ^ - [L]
+</IfModule>

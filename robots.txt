@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Блокируем админ-панель и API
+Disallow: /admin
+Disallow: /api/
+
+# Разрешаем поисковым системам
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Карта сайта
+Sitemap: https://loragate.uz/sitemap.xml
