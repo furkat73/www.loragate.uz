@@ -5,10 +5,11 @@ import { Link } from '@/lib/router'
 type Props = {
   title: string
   subtitle?: string
+  micro?: string
 }
 
 /** Шапка внутренней страницы: крошки + центрированный заголовок */
-export function PageHeader({ title, subtitle }: Props) {
+export function PageHeader({ title, subtitle, micro }: Props) {
   const { language } = useLanguage()
   return (
     <section className="relative overflow-hidden pb-10 pt-24 sm:pb-14 sm:pt-28 md:pb-16 md:pt-32">
@@ -30,6 +31,12 @@ export function PageHeader({ title, subtitle }: Props) {
           {subtitle && (
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
               {subtitle}
+            </p>
+          )}
+          {micro && (
+            <p className="mx-auto mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-gray-300 sm:text-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              {micro}
             </p>
           )}
         </div>

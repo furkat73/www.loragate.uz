@@ -19,6 +19,74 @@ const CASE_ROUTES: Record<string, string | undefined> = {
 }
 import { Reveal } from '@/components/ui/Reveal'
 
+type Lang = 'ru' | 'uz' | 'en'
+
+const CASE_BLURBS: Record<string, Record<Lang, string>> = {
+  pharma: {
+    ru: 'Контроль температуры и влажности по требованиям GMP/GDP. Партии под защитой, отчёты для аудита — за минуты.',
+    uz: 'GMP/GDP talablariga muvofiq harorat va namlik nazorati. Partiyalar himoyada, audit uchun hisobotlar — daqiqalarda.',
+    en: 'Temperature and humidity control per GMP/GDP. Batches protected, audit reports in minutes.',
+  },
+  logistics: {
+    ru: 'Стабильный мониторинг температурных режимов на всех этапах логистики. Слепых зон в пути больше нет.',
+    uz: 'Logistikaning barcha bosqichlarida harorat rejimlarining barqaror monitoringi. Yo‘lda ko‘r joylar endi yo‘q.',
+    en: 'Stable temperature monitoring across every logistics stage. No more blind spots en route.',
+  },
+  medicine: {
+    ru: 'Надёжный контроль условий хранения медицинских препаратов и вакцин. Без бумажных журналов и «забыли записать».',
+    uz: 'Tibbiy preparatlar va vaksinalarni saqlash sharoitlarini ishonchli nazorat qilish. Qog‘oz jurnallar va «yozishni unutdik»siz.',
+    en: 'Reliable storage control for medicines and vaccines. No paper logs or “forgot to write it down”.',
+  },
+  foodWarehouse: {
+    ru: 'Контроль температуры и влажности для сохранения качества и безопасности продуктов.',
+    uz: 'Mahsulotlar sifati va xavfsizligini saqlash uchun harorat va namlik nazorati.',
+    en: 'Temperature and humidity control preserving food quality and safety.',
+  },
+  freezer: {
+    ru: 'Непрерывный мониторинг температуры в морозильных камерах для сохранения качества замороженных продуктов.',
+    uz: 'Muzlatilgan mahsulotlar sifatini saqlash uchun muzlatgichlarda haroratni uzluksiz monitoring qilish.',
+    en: 'Continuous freezer monitoring preserving frozen product quality.',
+  },
+  greenhouse: {
+    ru: 'Контроль микроклимата в теплицах для оптимального роста растений и максимальной урожайности.',
+    uz: 'O‘simliklarning optimal o‘sishi va maksimal hosildorligi uchun issiqxonalarda mikroiqlim nazorati.',
+    en: 'Greenhouse microclimate control for optimal growth and maximum yield.',
+  },
+}
+
+const CASE_STORIES: Record<string, Record<Lang, string>> = {
+  pharma: {
+    ru: 'Раньше отклонения находили постфактум. Теперь система предупреждает сразу — и есть полная история для проверяющих.',
+    uz: 'Ilgari og‘ishlar keyin aniqlanardi. Endi tizim darhol ogohlantiradi — tekshiruvchilar uchun to‘liq tarix bor.',
+    en: 'Deviations used to be found after the fact. Now the system warns instantly — with full history for inspectors.',
+  },
+  logistics: {
+    ru: 'Груз едет — и вы видите, что с ним происходит. Не на выгрузке, а в реальном времени.',
+    uz: 'Yuk ketyapti — va u bilan nima bo‘layotganini ko‘rasiz. Tushirishda emas, real vaqtda.',
+    en: 'The cargo is moving — and you see what happens to it. Not at unloading, but in real time.',
+  },
+  medicine: {
+    ru: 'Вместо ручной записи с гигрометра — автоматическая фиксация. Ничего не забывается и не теряется.',
+    uz: 'Gigrometrdan qo‘lda yozish o‘rniga — avtomatik qayd etish. Hech narsa unutilmaydi va yo‘qolmaydi.',
+    en: 'Instead of manual hygrometer readings — automatic logging. Nothing forgotten, nothing lost.',
+  },
+  foodWarehouse: {
+    ru: 'Тысячи килограммов продукции больше не оказываются под риском из-за позднего обнаружения отклонения.',
+    uz: 'Minglab kilo mahsulot kech aniqlangan og‘ish tufayli endi xavf ostida qolmaydi.',
+    en: 'Thousands of kilos of product are no longer at risk from late-detected deviations.',
+  },
+  freezer: {
+    ru: 'Разморозка больше не «обнаруживается утром». Система сообщает сразу.',
+    uz: 'Erish endi «ertalab aniqlanmaydi». Tizim darhol xabar beradi.',
+    en: 'Thawing is no longer “discovered in the morning”. The system reports immediately.',
+  },
+  greenhouse: {
+    ru: 'Микроклимат под контролем — растения получают стабильные условия, а не сюрпризы.',
+    uz: 'Mikroiqlim nazoratda — o‘simliklar barqaror sharoit oladi, kutilmagan holatlar emas.',
+    en: 'Microclimate under control — plants get stable conditions, not surprises.',
+  },
+}
+
 export const CASE_ITEMS = [
   {
     icon: Warehouse,
@@ -77,7 +145,8 @@ export function Cases() {
 
 /** Сетка карточек кейсов без заголовка — для встройки в другие блоки */
 export function CaseGrid({ items }: { items: typeof CASE_ITEMS }) {
-  const { t } = useLanguage()
+  const { language, t } = useLanguage()
+  const lang = (language === 'uz' || language === 'en' ? language : 'ru') as Lang
   return (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {items.map(({ icon: Icon, key, image, benefits }, i) => (
@@ -99,7 +168,7 @@ export function CaseGrid({ items }: { items: typeof CASE_ITEMS }) {
                   </div>
                   <h3>{t(`cases.${key}.title`)}</h3>
                 </div>
-                <p className="mb-6 text-gray-600">{t(`cases.${key}.description`)}</p>
+                <p className="mb-6 text-gray-600">{CASE_BLURBS[key]?.[lang] ?? t(`cases.${key}.description`)}</p>
                 {CASE_ROUTES[key] && (
                   <Link
                     to={CASE_ROUTES[key] as string}
@@ -116,6 +185,11 @@ export function CaseGrid({ items }: { items: typeof CASE_ITEMS }) {
                     </div>
                   ))}
                 </div>
+                {CASE_STORIES[key]?.[lang] && (
+                  <blockquote className="mt-6 border-l-2 border-emerald-500 pl-4 text-sm leading-relaxed text-gray-500 italic">
+                    {CASE_STORIES[key][lang]}
+                  </blockquote>
+                )}
               </div>
             </div>
             </Reveal>

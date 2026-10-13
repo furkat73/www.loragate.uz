@@ -69,7 +69,7 @@ export function Certifications() {
             type="button"
             onClick={prev}
             disabled={current === 0}
-            className="absolute -left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-indigo-50 hover:shadow-xl disabled:opacity-30 disabled:hover:bg-white disabled:hover:shadow-lg sm:-left-5 sm:h-12 sm:w-12"
+            className="absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-indigo-50 hover:shadow-xl disabled:opacity-30 disabled:hover:bg-white disabled:hover:shadow-lg sm:h-12 sm:w-12 lg:-left-5"
           >
             <ChevronLeft className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
           </button>
@@ -109,7 +109,7 @@ export function Certifications() {
             type="button"
             onClick={next}
             disabled={current >= maxIndex}
-            className="absolute -right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-indigo-50 hover:shadow-xl disabled:opacity-30 disabled:hover:bg-white disabled:hover:shadow-lg sm:-right-5 sm:h-12 sm:w-12"
+            className="absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-indigo-50 hover:shadow-xl disabled:opacity-30 disabled:hover:bg-white disabled:hover:shadow-lg sm:h-12 sm:w-12 lg:-right-5"
           >
             <ChevronRight className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
           </button>

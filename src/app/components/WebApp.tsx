@@ -8,7 +8,6 @@ import {
   Smartphone,
 } from 'lucide-react'
 import { useLanguage } from '@/i18n/LanguageContext'
-import { ImageWithFallback } from '@/components/ui/ImageWithFallback'
 import { Reveal } from '@/components/ui/Reveal'
 
 export function WebApp() {
@@ -24,7 +23,7 @@ export function WebApp() {
   return (
     <section id="webApp" className="bg-white py-20">
       <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="mx-auto max-w-3xl">
           <div>
             <h2 className="mb-6">{t('webApp.title')}</h2>
             <p className="mb-4 text-gray-600">{t('webApp.description1')}</p>
@@ -63,16 +62,6 @@ export function WebApp() {
                 </div>
                 </Reveal>
               ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl border-8 border-gray-200 shadow-2xl">
-              <ImageWithFallback src="/images/dashboard.png" alt={t('webApp.title')} className="h-auto w-full" />
-            </div>
-            <div className="absolute -right-6 -bottom-6 hidden max-w-xs rounded-lg bg-teal-600 p-6 text-white shadow-xl md:block">
-              <p className="mb-1">{t('webApp.interface')}</p>
-              <p className="text-sm opacity-90">{t('webApp.interfaceDesc')}</p>
             </div>
           </div>
         </div>

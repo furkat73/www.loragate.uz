@@ -55,7 +55,6 @@
     .min-h-screen main input, .min-h-screen main select, .min-h-screen main textarea { color-scheme: dark; }
     .min-h-screen main input::placeholder, .min-h-screen main textarea::placeholder { color: #64748b !important; }
     #quiz [class~="bg-indigo-50"] { background-color: rgba(29,78,216,.20) !important; }
-    #quiz a[class*="text-indigo-600"] { color: #bfdbfe !important; border-color: #3b82f6 !important; }
     #certifications [class*="bg-white"] { background-color: #fff !important; }
 
     /* ════════════════════════════════════════
@@ -138,12 +137,12 @@
     /* ════════════════════════════════════════
        CARDS
        ════════════════════════════════════════ */
-    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img) {
+    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):not(a) {
       border: 1px solid #1e2c47 !important;
       box-shadow: 0 1px 3px rgba(0,0,0,.4) !important;
       transition: all .3s ease !important;
     }
-    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):hover {
+    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):not(a):hover {
       box-shadow: 0 8px 30px rgba(0,0,0,.5) !important;
       border-color: #2c3d63 !important;
       transform: translateY(-2px) !important;
@@ -380,8 +379,11 @@
     }
     .chdr-link.active {
       color: #fff !important;
-      background: rgba(59,130,246,.16) !important;
+      background: transparent !important;
+      box-shadow: inset 0 -2px 0 #22c55e !important;
+      border-radius: 0 !important;
     }
+    .chdr-brand-wrap { display:flex; }
     .chdr-cta,
     .chdr-drawer-cta,
     .chdr-floating {
@@ -408,7 +410,7 @@
       border: 1px solid rgba(255,255,255,.2) !important;
       color: #bfdbfe !important;
     }
-    .min-h-screen main > :first-child h1 { color: #fff !important; max-width: 680px !important; }
+    .min-h-screen main > :first-child h1 { color: #fff !important; max-width: 900px !important; }
     .min-h-screen main > :first-child h1 + p,
     .min-h-screen main > :first-child h1 + p + p { color: #e2e8f0 !important; }
     .min-h-screen main > :first-child [class*="space-y-3"] > div > div {
@@ -459,7 +461,7 @@
       letter-spacing: 0 !important;
       text-wrap: balance !important;
     }
-    .min-h-screen main span[class*="rounded-full"] {
+    .min-h-screen main span[class*="rounded-full"]:not([class*="bg-green-"]):not([class*="bg-emerald-"]):not([class*="bg-indigo-"]) {
       background: #eff6ff !important;
       color: #1d4ed8 !important;
       border: 1px solid #bfdbfe !important;
@@ -476,16 +478,28 @@
       letter-spacing: 0 !important;
     }
 
-    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):not([class*="animate-float"]) {
+    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):not(a):not([class*="animate-float"]) {
       background: #101a30 !important;
       border: 1px solid #1e2c47 !important;
       border-radius: 8px !important;
       box-shadow: 0 1px 3px rgba(0,0,0,.4) !important;
     }
-    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):not([class*="animate-float"]):hover {
+    .min-h-screen main [class*="rounded-xl"]:not([class*="chdr-"]):not(button):not(img):not(a):not([class*="animate-float"]):hover {
       border-color: #2c3d63 !important;
       box-shadow: 0 8px 30px rgba(0,0,0,.5) !important;
       transform: translateY(-4px) !important;
+    }
+    /* Светлая полоса: белые карточки поверх тёмного маппинга (тройной класс = специфичность выше) */
+    .min-h-screen main .light-band.light-band.light-band [class*="rounded-xl"] {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 12px !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06) !important;
+    }
+    .min-h-screen main .light-band.light-band.light-band [class*="rounded-xl"]:hover {
+      border-color: #cbd5e1 !important;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08) !important;
+      transform: translateY(-2px) !important;
     }
     .min-h-screen main [class*="w-10"][class*="h-10"][class*="rounded-lg"],
     .min-h-screen main [class*="w-12"][class*="h-12"][class*="rounded-lg"],
@@ -569,4 +583,24 @@
 
     /* Корпоративный B2B-стиль: спокойствие, без парящих анимаций */
     .min-h-screen main [class*="animate-float"] { animation: none !important; }
+
+    /* Широкие экраны: контент использует ширину (1600px вместо 1280px) */
+    @media (min-width: 1536px) {
+      .min-h-screen main .container.max-w-7xl,
+      .min-h-screen footer .container.max-w-7xl,
+      .chdr-inner {
+        max-width: 1600px !important;
+      }
+    }
+
+    /* Светлая полоса на тёмной теме (документы) */
+    .min-h-screen main .light-band { background: #f8fafc !important; }
+    .min-h-screen main .light-band h2 { color: #0f172a !important; }
+    .min-h-screen main .light-band p { color: #475569 !important; }
+    .min-h-screen main .light-band [class*="bg-white"] { background-color: #fff !important; }
+    .min-h-screen main .light-band [class*="text-gray-900"] { color: #0f172a !important; }
+    .min-h-screen main .light-band [class*="text-gray-600"],
+    .min-h-screen main .light-band [class*="text-gray-500"] { color: #475569 !important; }
+    .min-h-screen main .light-band [class*="border-gray-200"] { border-color: #e2e8f0 !important; }
+    .min-h-screen main .light-band [class*="text-indigo-600"] { color: #1d4ed8 !important; }
   

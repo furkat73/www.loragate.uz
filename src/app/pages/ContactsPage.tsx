@@ -7,7 +7,11 @@ export function ContactsPage() {
   const { t } = useLanguage()
   return (
     <>
-      <PageHeader title={t('contacts.title')} subtitle={t('contacts.subtitle')} />
+      <PageHeader
+        title={t('contacts.title')}
+        subtitle={t('contacts.subtitle')}
+        micro={t('contacts.workHours')}
+      />
       <Reveal>
         <Contacts />
       </Reveal>

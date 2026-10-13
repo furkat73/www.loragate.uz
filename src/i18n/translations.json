@@ -1,14 +1,5 @@
 {
   "ru": {
-    "header": {
-      "home": "Главная",
-      "equipment": "О системе",
-      "services": "Услуги",
-      "cases": "Кейсы",
-      "contacts": "Контакты",
-      "demo": "Посмотреть демо",
-      "order": "Заказать внедрение"
-    },
     "hero": {
       "badge": "Инновационные технологии LoRa для мониторинга микроклимата",
       "title": "Валидированная система мониторинга микроклимата для фармацевтических и пищевых предприятий",
@@ -19,18 +10,10 @@
       "advantage3": "Автоматические уведомления по SMS/Email/Push при отклонениях",
       "advantage4": "Защита и неизменность данных",
       "advantage5": "24/7 мониторинг всех зон хранения включая морозильные камеры и холодильные камеры",
-      "advantage6": "Долгий срок работы датчиков, до 2 лет без замены батарей",
       "orderButton": "Получить демо",
-      "demoButton": "Получить демо",
-      "downloadKP": "Скачать Коммерческое предложение",
       "statsClients": "Клиентов",
       "statsReliability": "Надёжность",
-      "statsSupport": "Поддержка",
-      "monitoring24": "24/7 Контроль для GMP, GDP, GPP, GSP и FDA",
-      "monitoringDesc": "Круглосуточный контроль температуры и влажности",
-      "supportDays": "При заказе системы мониторинга",
-      "supportDesc": "- Бесплатный аудит соответствия GxP",
-      "supportDesc2": "- 90 дней - Бесплатной технической поддержки"
+      "statsSupport": "Поддержка"
     },
     "gmpSolution": {
       "title": "GMP-решение под ключ",
@@ -103,26 +86,6 @@
       "security": {
         "title": "Безопасность данных",
         "desc": "Защищённое хранение и доступ"
-      }
-    },
-    "aboutSystem": {
-      "title": "О системе",
-      "subtitle": "Полный цикл внедрения системы климат-мониторинга от проектирования до запуска в эксплуатацию",
-      "fullCycle": {
-        "title": "Полный цикл внедрения системы климат-мониторинга под ключ",
-        "desc": "От проектирования до запуска в эксплуатацию"
-      },
-      "setup": {
-        "title": "Настройка, установка и сервисное обслуживание",
-        "desc": "Профессиональная поддержка на всех этапах"
-      },
-      "integration": {
-        "title": "Интеграция с корпоративными системами",
-        "desc": "Подключение к информационным системам и системам уведомлений"
-      },
-      "training": {
-        "title": "Обучение персонала",
-        "desc": "Комплексное обучение работе с системой"
       }
     },
     "howItWorks": {
@@ -220,7 +183,7 @@
     },
     "contacts": {
       "title": "Контакты",
-      "subtitle": "Свяжитесь с нами любым удобным способом",
+      "subtitle": "Свяжитесь с нами удобным способом. Обычно отвечаем в течение 15 минут в рабочее время",
       "ourContacts": "Наши контакты",
       "address": "Адрес",
       "addressValue": "Узбекистан, г. Ташкент Мирзо-Улугбекский р-н. ул. Ялангач -15",
@@ -236,7 +199,24 @@
       "message": "Сообщение *",
       "messagePlaceholder": "Опишите ваш запрос...",
       "submit": "Отправить",
-      "successMessage": "Спасибо за обращение! Мы свяжемся с вами в ближайшее время."
+      "successMessage": "Спасибо за обращение! Мы свяжемся с вами в ближайшее время.",
+      "workHours": "Пн–Пт 9:00–18:00 (Ташкент)",
+      "responseTime": "Обычно отвечаем в течение 15 минут в рабочее время",
+      "quickTitle": "Напишите или позвоните",
+      "salesTitle": "Отдел продаж",
+      "supportTitle": "Техподдержка",
+      "topicLabel": "Тема обращения",
+      "topicAudit": "Хочу бесплатный аудит",
+      "topicConsult": "Консультация по системе",
+      "topicSupport": "Техническая поддержка",
+      "topicOther": "Другое",
+      "emailOptional": "Email (необязательно)",
+      "messageOptional": "Сообщение (необязательно)",
+      "formNote": "Обычно отвечаем в течение 15 минут в рабочее время. Заявка ни к чему не обязывает.",
+      "routeBtn": "Построить маршрут",
+      "auditTitle": "Хотите, чтобы инженер приехал на объект?",
+      "auditText": "Бесплатный аудит: замер сигнала, поиск слепых зон, схема датчиков. Без обязательств.",
+      "auditBtn": "Записаться на аудит"
     },
     "footer": {
       "description": "Система мониторинга температуры и влажности на базе LoRa",
@@ -253,64 +233,6 @@
       "download": "GPP",
       "feedback": "FDA",
       "copyright": "Все права защищены."
-    },
-    "stats": {
-      "reliability": {
-        "value": "Качеством и надежностью",
-        "label": "Надёжность системы",
-        "desc": "Время работы без сбоев"
-      },
-      "clients": {
-        "value": "150+",
-        "label": "Довольных клиентов",
-        "desc": "Компаний используют систему"
-      },
-      "experience": {
-        "value": "5 лет",
-        "label": "Опыт работы",
-        "desc": "На рынке мониторинга"
-      },
-      "support": {
-        "value": "24/7",
-        "label": "Техподдержка",
-        "desc": "Круглосуточная помощь"
-      }
-    },
-    "promoBanner": {
-      "sensors": {
-        "title": "Датчики TAG 08 / TAG 08B",
-        "subtitle": "Точность измерений и долговечность",
-        "description": "Беспроводные датчики температуры и влажности с автономной работой батареи до 2 лет. Высокая точность измерений для фармацевтики и пищевой промышленности.",
-        "badge": "Зона покрытия до 300 метров",
-        "feature1": "Автономная работа батареи до 2 лет",
-        "feature2": "Высокая точность измерений",
-        "feature3": "Устойчивость к внешним воздействиям",
-        "feature4": "Простая установка и настройка"
-      },
-      "gateway": {
-        "title": "Шлюз Wi-Fi RD07",
-        "subtitle": "Надёжная связь для вашего бизнеса",
-        "description": "Современный LoRa Gate шлюз с поддержкой Wi-Fi. Обеспечивает стабильную передачу данных от датчиков на расстоянии до 300 метров.",
-        "badge": "Стабильность",
-        "feature1": "Поддержка стандарта LoRaWAN",
-        "feature2": "Простое подключение через Wi-Fi",
-        "feature3": "Работа 24/7 без перерывов",
-        "feature4": "Удалённый мониторинг и управление"
-      },
-      "dashboard": {
-        "title": "Веб-приложение мониторинга",
-        "subtitle": "Полный контроль в реальном времени",
-        "description": "Интуитивный интерфейс для мониторинга всех датчиков. Графики, отчёты, уведомления и экспорт данных в один клик.",
-        "badge": "Бесплатно",
-        "feature1": "Дашборд в реальном времени",
-        "feature2": "Интерфейс на русском и узбекском языках",
-        "feature3": "Схема расположения датчиков на территории",
-        "feature4": "История и аналитика",
-        "feature5": "Автоматические уведомления",
-        "feature6": "Экспорт отчётов PDF/Excel"
-      },
-      "orderNow": "Заказать сейчас",
-      "learnMore": "Подробнее"
     },
     "cases": {
       "title": "Кейсы использования",
@@ -369,7 +291,7 @@
       "description2": "Доступ с любого устройства с любой точки мира, где имеется интернет.",
       "mainFunctions": "Основные функции:",
       "validation": {
-        "title": "Валидация GMP",
+        "title": "GxP система",
         "desc": "Web-приложение разработано с учетом требований стандартов GMP и прошло валидацию"
       },
       "access": {
@@ -396,7 +318,6 @@
         "title": "Экспорт отчетов (PDF / Excel)",
         "desc": "Данные для аудита и анализа"
       },
-      "demoButton": "Получить демо",
       "interface": "Интуитивный интерфейс",
       "interfaceDesc": "Быстрый доступ ко всем функциям"
     },
@@ -413,18 +334,71 @@
     "common": {
       "readMore": "Подробнее",
       "learnMore": "Узнать больше"
+    },
+    "about": {
+      "heroTitle": "О компании Lora Gate",
+      "heroDescription": "Внедряем валидированные системы мониторинга микроклимата для фармацевтических и пищевых предприятий",
+      "heroImageAlt": "Склад с датчиками Lora Gate по зонам",
+      "introLead": "ООО «Lora Gate» — эксперт в разработке и внедрении автоматизированных систем непрерывного мониторинга температуры и влажности.",
+      "introHelp": "Мы помогаем фармацевтическим и пищевым складам, дистрибьюторским центрам и производственным объектам:",
+      "introBullets": [
+        "Обеспечивать непрерывность холодовой цепи",
+        "Защищать дорогостоящую продукцию от порчи",
+        "Строго соответствовать требованиям GxP, GDP, GMP и HACCP"
+      ],
+      "intro": "ООО \"Lora Gate\" — эксперт в области разработки и внедрения автоматизированных систем непрерывного мониторинга температуры и влажности для фармацевтических и пищевых складов, дистрибьюторских центров и производственных объектов. Мы помогаем бизнесу обеспечивать непрерывность холодовой цепи, защищать дорогостоящую продукцию от рисков порчи и строго соответствовать национальным и международным регуляторным требованиям (GxP, GDP, GMP, HACCP).",
+      "usp": [
+        "Валидация IQ / OQ / PQ",
+        "Выезд инженера на объект",
+        "Ответ за 15 минут"
+      ],
+      "solutionsTitle": "Наши ключевые решения и услуги",
+      "solutions": [
+        {
+          "title": "Непрерывный мониторинг 24/7",
+          "desc": "Беспроводное оборудование и программный комплекс для точного контроля микроклимата в режиме реального времени."
+        },
+        {
+          "title": "Мгновенные оповещения",
+          "desc": "Автоматические уведомления (SMS, Email, Telegram) при выходе температуры или влажности за заданные пределы."
+        },
+        {
+          "title": "Валидация и температурное картирование",
+          "desc": "Комплексная подготовка объектов к аудитам и регуляторным проверкам."
+        },
+        {
+          "title": "Формирование отчетов",
+          "desc": "Автоматическая генерация неизменяемых отчетов и графиков для архивирования данных согласно стандартам GxP."
+        }
+      ],
+      "docs": {
+        "title": "Документация и валидация",
+        "description": "Разрабатываем полный пакет валидационных документов под вашу GxP-систему",
+        "cta": "Заказать разработку документов",
+        "items": [
+          { "title": "Квалификация проектной документации (DQ)", "code": "LG.DQ.01", "img": "/images/DQ.png" },
+          { "title": "Окончательный отчёт о валидации", "code": "LG.FVR.01", "img": "/images/FVR.png" },
+          { "title": "Квалификация монтажа (IQ)", "code": "LG.IQP.01", "img": "/images/IQ.png" },
+          { "title": "Квалификация функционирования (OQ)", "code": "LG.OQP.01", "img": "/images/OQ.png" },
+          { "title": "Квалификация эксплуатации (PQ)", "code": "LG.PQP.01", "img": "/images/PQ.png" },
+          { "title": "План валидации (PV)", "code": "LG.PV.01", "img": "/images/PV.png" }
+        ]
+      },
+      "galleryTitle": "Оборудование Lora Gate",
+      "gallery": [
+        { "alt": "Датчик TAG 08" },
+        { "alt": "Шлюз RD07" },
+        { "alt": "Архитектура системы" },
+        { "alt": "Морозильные камеры" },
+        { "alt": "Холодовая цепь" },
+        { "alt": "Фармацевтический склад" }
+      ],
+      "securityTitle": "Защитите свои запасы и пройдите проверки без рисков.",
+      "metaTitle": "О компании Lora Gate — валидированный мониторинг микроклимата для GxP",
+      "metaDescription": "ООО «Lora Gate» — комплексные системы мониторинга температуры и влажности с валидацией IQ/OQ/PQ для фармацевтических и пищевых предприятий."
     }
   },
   "uz": {
-    "header": {
-      "home": "Bosh sahifa",
-      "equipment": "Tizim haqida",
-      "services": "Xizmatlar",
-      "cases": "Loyihalar",
-      "contacts": "Kontaktlar",
-      "demo": "Demo ko'rish",
-      "order": "Joriy etishni buyurtma qilish"
-    },
     "hero": {
       "badge": "Mikroiqlimni monitoring qilish uchun LoRa innovatsion texnologiyalari",
       "title": "Farmatsevtika va oziq-ovqat korxonalari uchun validatsiyadan o'tkazilgan, mikroiqlim monitoring tizimi",
@@ -435,18 +409,10 @@
       "advantage3": "Og'ishlarda SMS/Email/Push orqali avtomatik xabarnomalar",
       "advantage4": "Ma'lumotlarni himoya qilish va o'zgartirib bo'lmasligi",
       "advantage5": "Muzlatgichlar va sovutgichlar kabi barcha saqlash zonalarini 24/7 monitoring",
-      "advantage6": "Sensorlarning uzoq muddatli ishlashi, batareyalarni almashtirmasdan 2 yilgacha",
       "orderButton": "Demoni olish",
-      "demoButton": "Demoni olish",
-      "downloadKP": "Tijorat taklifini yuklab olish",
       "statsClients": "Mijozlar",
       "statsReliability": "Ishonchlilik",
-      "statsSupport": "Qo'llab-quvvatlash",
-      "monitoring24": "GMP va FDA uchun 24/7 nazorat",
-      "monitoringDesc": "Harorat va namlikni kecha-kunduz nazorat qilish",
-      "supportDays": "Monitoring tizimini buyurtma qilganda",
-      "supportDesc": "- GxPga moslik bo'yicha bepul audit",
-      "supportDesc2": "- 90 kun - Bepul texnik yordam"
+      "statsSupport": "Qo'llab-quvvatlash"
     },
     "gmpSolution": {
       "title": "GMP yechim \"kalitdan-kalitgacha\"",
@@ -519,26 +485,6 @@
       "security": {
         "title": "Ma'lumotlar xavfsizligi",
         "desc": "Himoyalangan saqlash va kirish"
-      }
-    },
-    "aboutSystem": {
-      "title": "Tizim haqida",
-      "subtitle": "Loyihalashdan ekspluatatsiyaga qadar iqlim monitoring tizimini joriy etishning to'liq tsikli",
-      "fullCycle": {
-        "title": "Iqlim monitoring tizimini \"kalitdan-kalitgacha\" to'liq tsikli",
-        "desc": "Loyihalashdan ekspluatatsiyaga qadar"
-      },
-      "setup": {
-        "title": "Sozlash, o'rnatish va xizmat ko'rsatish",
-        "desc": "Barcha bosqichlarda professional yordam"
-      },
-      "integration": {
-        "title": "Korporativ tizimlar bilan integratsiya",
-        "desc": "Axborot tizimlari va xabarnoma tizimlariga ulanish"
-      },
-      "training": {
-        "title": "Xodimlarni o'qitish",
-        "desc": "Tizim bilan ishlash bo'yicha kompleks o'qitish"
       }
     },
     "howItWorks": {
@@ -636,7 +582,7 @@
     },
     "contacts": {
       "title": "Kontaktlar",
-      "subtitle": "Biz bilan qulay usul bilan bog'laning",
+      "subtitle": "Biz bilan qulay usulda bog'laning. Ish vaqtida odatda 15 daqiqa ichida javob beramiz",
       "ourContacts": "Bizning kontaktlarimiz",
       "address": "Manzil",
       "addressValue": "O'zbekiston, Toshkent sh. Mirzo-Ulug'bek t. Yalangoch ko'chasi -15",
@@ -652,7 +598,24 @@
       "message": "Xabar *",
       "messagePlaceholder": "So'rovingizni tasvirlang...",
       "submit": "Yuborish",
-      "successMessage": "Murojaatingiz uchun rahmat! Tez orada siz bilan bog'lanamiz."
+      "successMessage": "Murojaatingiz uchun rahmat! Tez orada siz bilan bog'lanamiz.",
+      "workHours": "Dush–Jum 9:00–18:00 (Toshkent)",
+      "responseTime": "Ish vaqtida odatda 15 daqiqa ichida javob beramiz",
+      "quickTitle": "Yozing yoki qo‘ng‘iroq qiling",
+      "salesTitle": "Savdo bo‘limi",
+      "supportTitle": "Texnik yordam",
+      "topicLabel": "Murojaat mavzusi",
+      "topicAudit": "Bepul audit xohlayman",
+      "topicConsult": "Tizim bo‘yicha maslahat",
+      "topicSupport": "Texnik yordam",
+      "topicOther": "Boshqa",
+      "emailOptional": "Email (ixtiyoriy)",
+      "messageOptional": "Xabar (ixtiyoriy)",
+      "formNote": "Ish vaqtida odatda 15 daqiqa ichida javob beramiz. Ariza hech narsaga majbur qilmaydi.",
+      "routeBtn": "Marshrut qurish",
+      "auditTitle": "Muhandis obyektingizga kelishini xohlaysizmi?",
+      "auditText": "Bepul audit: signal o‘lchash, ko‘r zonalarni qidirish, datchiklar sxemasi. Majburiyatsiz.",
+      "auditBtn": "Auditga yozilish"
     },
     "footer": {
       "description": "LoRa asosidagi harorat va namlik monitoring tizimi",
@@ -669,64 +632,6 @@
       "download": "GPP",
       "feedback": "FDA",
       "copyright": "Barcha huquqlar himoyalangan."
-    },
-    "stats": {
-      "reliability": {
-        "value": "Sifat va ishonchlilik",
-        "label": "Tizimning ishonchliligi",
-        "desc": "Nosozliklarsiz ishlash vaqti"
-      },
-      "clients": {
-        "value": "150+",
-        "label": "Mamnun mijozlar",
-        "desc": "Kompaniyalar tizimdan foydalanadi"
-      },
-      "experience": {
-        "value": "5 yil",
-        "label": "Ish tajribasi",
-        "desc": "Monitoring bozorida"
-      },
-      "support": {
-        "value": "24/7",
-        "label": "Texnik yordam",
-        "desc": "Kecha-kunduz yordam"
-      }
-    },
-    "promoBanner": {
-      "sensors": {
-        "title": "TAG 08 / TAG 08B sensorlari",
-        "subtitle": "O'lchovlarning aniqligi va chidamliligi",
-        "description": "Batareyadan 2 yilgacha avtonom ishlaydigan simsiz harorat va namlik sensorlari. Farmatsevtika va oziq-ovqat sanoati uchun yuqori o'lchov aniqligi.",
-        "badge": "300 metrgacha qamrov zonasi",
-        "feature1": "Batareyadan 2 yilgacha avtonom ishlash",
-        "feature2": "Yuqori o'lchov aniqligi",
-        "feature3": "Tashqi ta'sirlarga chidamlilik",
-        "feature4": "Oddiy o'rnatish va sozlash"
-      },
-      "gateway": {
-        "title": "Wi-Fi RD07 shlyuzi",
-        "subtitle": "Biznesingiz uchun ishonchli aloqa",
-        "description": "Wi-Fi qo'llab-quvvatlash bilan zamonaviy LoRa Gate shlyuzi. Sensorlardan 300 metrgacha masofada barqaror ma'lumot uzatishni ta'minlaydi.",
-        "badge": "Barqarorlik",
-        "feature1": "LoRaWAN standartini qo'llab-quvvatlash",
-        "feature2": "Wi-Fi orqali oddiy ulanish",
-        "feature3": "Tanaffussiz 24/7 ishlash",
-        "feature4": "Masofadan monitoring va boshqarish"
-      },
-      "dashboard": {
-        "title": "Monitoring veb-ilovasi",
-        "subtitle": "Real vaqtda to'liq nazorat",
-        "description": "Barcha sensorlarni monitoring qilish uchun intuitiv interfeys. Grafiklar, hisobotlar, xabarnomalar va bir bosishda ma'lumotlarni eksport qilish.",
-        "badge": "Bepul",
-        "feature1": "Real vaqtda dashboard",
-        "feature2": "Rus va o'zbek tillarida interfeys",
-        "feature3": "Hududdagi sensorlarning joylashish sxemasi",
-        "feature4": "Tarix va tahlil",
-        "feature5": "Avtomatik xabarnomalar",
-        "feature6": "PDF/Excel hisobotlarni eksport qilish"
-      },
-      "orderNow": "Hozir buyurtma qilish",
-      "learnMore": "Batafsil"
     },
     "cases": {
       "title": "Foydalanish loyihalari",
@@ -785,7 +690,7 @@
       "description2": "Internet mavjud bo'lgan dunyoning har qanday nuqtasidan har qanday qurilmadan kirish.",
       "mainFunctions": "Asosiy funksiyalar:",
       "validation": {
-        "title": "GMP validatsiya",
+        "title": "GxP tizimi",
         "desc": "Veb-ilova GMP standartlari talablarini hisobga olgan holda ishlab chiqilgan va validatsiyadan o'tgan"
       },
       "access": {
@@ -812,7 +717,6 @@
         "title": "Hisobotlarni eksport qilish (PDF / Excel)",
         "desc": "Audit va tahlil uchun ma'lumotlar"
       },
-      "demoButton": "Demoni olish",
       "interface": "Intuitiv interfeys",
       "interfaceDesc": "Barcha funksiyalarga tez kirish"
     },
@@ -829,18 +733,59 @@
     "common": {
       "readMore": "Batafsil",
       "learnMore": "Ko'proq ma'lumot olish"
+    },
+    "about": {
+      "heroTitle": "Lora Gate kompaniyasi haqida",
+      "heroDescription": "Farmatsevtika va oziq-ovqat korxonalari uchun validatsiyalangan mikroiqlim monitoring tizimlarini joriy qilamiz",
+      "heroImageAlt": "Zonalar bo'yicha Lora Gate datchiklari o'rnatilgan ombor",
+      "introLead": "\"Lora Gate\" MChJ — harorat va namlikni uzluksiz monitoring qilish avtomatlashtirilgan tizimlarini ishlab chiqish va joriy qilish bo'yicha ekspert.",
+      "introHelp": "Farmatsevtika va oziq-ovqat omborlari, distribyutorlik markazlari va ishlab chiqarish obyektlariga yordam beramiz:",
+      "introBullets": [
+        "Sovuq zanjir uzluksizligini ta'minlash",
+        "Qimmatbaho mahsulotlarni buzilishdan himoya qilish",
+        "GxP, GDP, GMP va HACCP talablariga qat'iy rioya qilish"
+      ],
+      "intro": "\"Lora Gate\" MChJ — farmatsevtika va oziq-ovqat omborlari, distribyutorlik markazlari va ishlab chiqarish obyektlari uchun harorat va namlikni uzluksiz monitoring qilish avtomatlashtirilgan tizimlarini ishlab chiqish va joriy qilish bo'yicha ekspert. Biz biznesga sovuk zanjir uzluksizligini ta'minlash, qimmatbaho mahsulotlarni buzilish xavflaridan himoya qilish va milliy hamda xalqaro tartibga solish talablariga (GxP, GDP, GMP, HACCP) qat'iy rioya qilishga yordam beramiz.",
+      "usp": [
+        "IQ / OQ / PQ validatsiya",
+        "Ob'ektga muhandis chiqishi",
+        "15 daqiqada javob"
+      ],
+      "solutionsTitle": "Asosiy yechimlarimiz va xizmatlarimiz",
+      "solutions": [
+        { "title": "Uzluksiz 24/7 monitoring", "desc": "Real vaqt rejimida mikroiqlimni aniq nazorat qilish uchun simsiz uskunalar va dasturiy majmua." },
+        { "title": "Darhol xabarnomalar", "desc": "Harorat yoki namlik belgilangan chegaralardan chiqqanda avtomatik xabarnomalar (SMS, Email, Telegram)." },
+        { "title": "Validatsiya va harorat kartalashi", "desc": "Obyektlarni audit va tartibga solish tekshiruvlariga kompleks tayyorlash." },
+        { "title": "Hisobotlarni shakllantirish", "desc": "GxP standartlariga muvofiq ma'lumotlarni arxivlash uchun o'zgarmas hisobotlar va grafiklarni avtomatik yaratish." }
+      ],
+      "docs": {
+        "title": "Hujjatlar va validatsiya",
+        "description": "GxP tizimingiz uchun validatsiya hujjatlarining to'liq paketini ishlab chiqamiz",
+        "cta": "Hujjatlarni ishlab chiqishni buyurtma qilish",
+        "items": [
+          { "title": "Loyiha hujjatlari malakasi (DQ)", "code": "LG.DQ.01", "img": "/images/DQ.png" },
+          { "title": "Validatsiya bo'yicha yakuniy hisobot", "code": "LG.FVR.01", "img": "/images/FVR.png" },
+          { "title": "Montaj malakasi (IQ)", "code": "LG.IQP.01", "img": "/images/IQ.png" },
+          { "title": "Funksionallash malakasi (OQ)", "code": "LG.OQP.01", "img": "/images/OQ.png" },
+          { "title": "Ekspluatatsiya malakasi (PQ)", "code": "LG.PQP.01", "img": "/images/PQ.png" },
+          { "title": "Validatsiya rejasi (PV)", "code": "LG.PV.01", "img": "/images/PV.png" }
+        ]
+      },
+      "galleryTitle": "Lora Gate uskunalari",
+      "gallery": [
+        { "alt": "TAG 08 datchigi" },
+        { "alt": "RD07 shlyuzi" },
+        { "alt": "Tizim arxitekturasi" },
+        { "alt": "Muzlatgichlar" },
+        { "alt": "Sovuq zanjir" },
+        { "alt": "Farmatsevtika ombori" }
+      ],
+      "securityTitle": "Zaxiralaringizni himoya qiling va tekshiruvlardan xavf-xatarsiz o'ting.",
+      "metaTitle": "Lora Gate kompaniyasi haqida — validatsiyalangan mikroiqlim monitoringi GxP uchun",
+      "metaDescription": "\"Lora Gate\" MChJ — farmatsevtika va oziq-ovqat korxonalari uchun IQ/OQ/PQ validatsiyali harorat va namlik monitoring tizimlari."
     }
   },
   "en": {
-    "header": {
-      "home": "Home",
-      "equipment": "About the system",
-      "services": "Services",
-      "cases": "Cases",
-      "contacts": "Contacts",
-      "demo": "View demo",
-      "order": "Request deployment"
-    },
     "hero": {
       "badge": "Innovative LoRa technologies for microclimate monitoring",
       "title": "Validated microclimate monitoring system for pharmaceutical and food enterprises",
@@ -851,18 +796,10 @@
       "advantage3": "Automatic SMS/Email/Push notifications on deviations",
       "advantage4": "Data protection and immutability",
       "advantage5": "24/7 monitoring of all storage zones including freezers and cold rooms",
-      "advantage6": "Long sensor battery life — up to 2 years without replacement",
       "orderButton": "Get a demo",
-      "demoButton": "Get a demo",
-      "downloadKP": "Download commercial proposal",
       "statsClients": "Clients",
       "statsReliability": "Reliability",
-      "statsSupport": "Support",
-      "monitoring24": "24/7 control for GMP, GDP, GPP, GSP and FDA",
-      "monitoringDesc": "Round-the-clock temperature and humidity control",
-      "supportDays": "When ordering a monitoring system",
-      "supportDesc": "- Free GxP compliance audit",
-      "supportDesc2": "- 90 days of free technical support"
+      "statsSupport": "Support"
     },
     "gmpSolution": {
       "title": "Turnkey GMP solution",
@@ -935,26 +872,6 @@
       "security": {
         "title": "Data security",
         "desc": "Protected storage and access"
-      }
-    },
-    "aboutSystem": {
-      "title": "About the system",
-      "subtitle": "Full-cycle deployment of a climate monitoring system, from design to commissioning",
-      "fullCycle": {
-        "title": "Turnkey climate monitoring deployment",
-        "desc": "From design to commissioning"
-      },
-      "setup": {
-        "title": "Setup, installation and maintenance",
-        "desc": "Professional support at every stage"
-      },
-      "integration": {
-        "title": "Integration with corporate systems",
-        "desc": "Connection to information and notification systems"
-      },
-      "training": {
-        "title": "Staff training",
-        "desc": "Comprehensive training on working with the system"
       }
     },
     "howItWorks": {
@@ -1052,7 +969,7 @@
     },
     "contacts": {
       "title": "Contacts",
-      "subtitle": "Reach us any convenient way",
+      "subtitle": "Reach us any convenient way. We usually reply within 15 minutes during working hours",
       "ourContacts": "Our contacts",
       "address": "Address",
       "addressValue": "Uzbekistan, Tashkent, Mirzo-Ulugbek district, Yalangach street -15",
@@ -1068,7 +985,24 @@
       "message": "Message *",
       "messagePlaceholder": "Describe your request...",
       "submit": "Send",
-      "successMessage": "Thank you for reaching out! We will contact you shortly."
+      "successMessage": "Thank you for reaching out! We will contact you shortly.",
+      "workHours": "Mon–Fri 9:00–18:00 (Tashkent)",
+      "responseTime": "We usually reply within 15 minutes during working hours",
+      "quickTitle": "Message or call us",
+      "salesTitle": "Sales",
+      "supportTitle": "Technical support",
+      "topicLabel": "Request topic",
+      "topicAudit": "I want a free audit",
+      "topicConsult": "System consultation",
+      "topicSupport": "Technical support",
+      "topicOther": "Other",
+      "emailOptional": "Email (optional)",
+      "messageOptional": "Message (optional)",
+      "formNote": "We usually reply within 15 minutes during working hours. No obligations.",
+      "routeBtn": "Get directions",
+      "auditTitle": "Want an engineer to visit your facility?",
+      "auditText": "Free audit: signal measurement, blind-spot search, sensor map. No obligations.",
+      "auditBtn": "Book an audit"
     },
     "footer": {
       "description": "LoRa-based temperature and humidity monitoring system",
@@ -1085,64 +1019,6 @@
       "download": "GPP",
       "feedback": "FDA",
       "copyright": "All rights reserved."
-    },
-    "stats": {
-      "reliability": {
-        "value": "Quality and reliability",
-        "label": "System reliability",
-        "desc": "Uptime without failures"
-      },
-      "clients": {
-        "value": "150+",
-        "label": "Satisfied clients",
-        "desc": "Companies use the system"
-      },
-      "experience": {
-        "value": "5 years",
-        "label": "Experience",
-        "desc": "In the monitoring market"
-      },
-      "support": {
-        "value": "24/7",
-        "label": "Technical support",
-        "desc": "Round-the-clock assistance"
-      }
-    },
-    "promoBanner": {
-      "sensors": {
-        "title": "TAG 08 / TAG 08B sensors",
-        "subtitle": "Measurement accuracy and durability",
-        "description": "Wireless temperature and humidity sensors with up to 2 years of battery autonomy. High measurement accuracy for pharma and food industries.",
-        "badge": "Coverage zone up to 300 meters",
-        "feature1": "Up to 2 years of battery autonomy",
-        "feature2": "High measurement accuracy",
-        "feature3": "Resistance to external impacts",
-        "feature4": "Simple installation and setup"
-      },
-      "gateway": {
-        "title": "RD07 Wi-Fi gateway",
-        "subtitle": "Reliable connectivity for your business",
-        "description": "Modern LoRa Gate gateway with Wi-Fi support. Provides stable data transmission from sensors up to 300 meters away.",
-        "badge": "Stability",
-        "feature1": "LoRaWAN standard support",
-        "feature2": "Simple connection via Wi-Fi",
-        "feature3": "24/7 operation without interruptions",
-        "feature4": "Remote monitoring and control"
-      },
-      "dashboard": {
-        "title": "Monitoring web application",
-        "subtitle": "Full control in real time",
-        "description": "Intuitive interface for monitoring all sensors. Charts, reports, notifications and one-click data export.",
-        "badge": "Free",
-        "feature1": "Real-time dashboard",
-        "feature2": "Interface in Russian, Uzbek and English",
-        "feature3": "Sensor placement map of the premises",
-        "feature4": "History and analytics",
-        "feature5": "Automatic notifications",
-        "feature6": "PDF/Excel report export"
-      },
-      "orderNow": "Order now",
-      "learnMore": "Learn more"
     },
     "cases": {
       "title": "Use cases",
@@ -1201,7 +1077,7 @@
       "description2": "Access from any device, from anywhere in the world with internet.",
       "mainFunctions": "Main functions:",
       "validation": {
-        "title": "GMP validation",
+        "title": "GxP system",
         "desc": "The web application was developed to GMP standards and validated"
       },
       "access": {
@@ -1228,7 +1104,6 @@
         "title": "Report export (PDF / Excel)",
         "desc": "Data for audits and analysis"
       },
-      "demoButton": "Get a demo",
       "interface": "Intuitive interface",
       "interfaceDesc": "Quick access to all functions"
     },
@@ -1245,6 +1120,56 @@
     "common": {
       "readMore": "Read more",
       "learnMore": "Learn more"
+    },
+    "about": {
+      "heroTitle": "About Lora Gate",
+      "heroDescription": "We deploy validated microclimate monitoring systems for pharmaceutical and food enterprises",
+      "heroImageAlt": "Warehouse with Lora Gate sensors by zone",
+      "introLead": "\"Lora Gate\" LLC is an expert in developing and deploying automated continuous temperature and humidity monitoring systems.",
+      "introHelp": "We help pharmaceutical and food warehouses, distribution centers and production facilities:",
+      "introBullets": [
+        "Ensure cold chain continuity",
+        "Protect valuable products from spoilage",
+        "Strictly comply with GxP, GDP, GMP and HACCP requirements"
+      ],
+      "intro": "\"Lora Gate\" LLC is an expert in developing and deploying automated continuous temperature and humidity monitoring systems for pharmaceutical and food warehouses, distribution centers and production facilities. We help businesses ensure cold chain continuity, protect valuable products from spoilage risks and strictly comply with national and international regulatory requirements (GxP, GDP, GMP, HACCP).",
+      "usp": [
+        "IQ / OQ / PQ validation",
+        "On-site engineer visits",
+        "15-minute response"
+      ],
+      "solutionsTitle": "Our key solutions and services",
+      "solutions": [
+        { "title": "Continuous 24/7 monitoring", "desc": "Wireless hardware and software suite for accurate real-time microclimate control." },
+        { "title": "Instant alerts", "desc": "Automatic notifications (SMS, Email, Telegram) when temperature or humidity leave set limits." },
+        { "title": "Validation and temperature mapping", "desc": "Comprehensive facility preparation for audits and regulatory inspections." },
+        { "title": "Reporting", "desc": "Automatic generation of tamper-proof reports and charts for GxP-compliant data archiving." }
+      ],
+      "docs": {
+        "title": "Documentation & validation",
+        "description": "We develop the full validation document package for your GxP system",
+        "cta": "Order validation documents",
+        "items": [
+          { "title": "Design qualification (DQ)", "code": "LG.DQ.01", "img": "/images/DQ.png" },
+          { "title": "Final validation report", "code": "LG.FVR.01", "img": "/images/FVR.png" },
+          { "title": "Installation qualification (IQ)", "code": "LG.IQP.01", "img": "/images/IQ.png" },
+          { "title": "Operational qualification (OQ)", "code": "LG.OQP.01", "img": "/images/OQ.png" },
+          { "title": "Performance qualification (PQ)", "code": "LG.PQP.01", "img": "/images/PQ.png" },
+          { "title": "Performance validation (PV)", "code": "LG.PV.01", "img": "/images/PV.png" }
+        ]
+      },
+      "galleryTitle": "Lora Gate hardware",
+      "gallery": [
+        { "alt": "TAG 08 sensor" },
+        { "alt": "RD07 gateway" },
+        { "alt": "System architecture" },
+        { "alt": "Freezers" },
+        { "alt": "Cold chain" },
+        { "alt": "Pharmaceutical warehouse" }
+      ],
+      "securityTitle": "Protect your stock and pass inspections risk-free.",
+      "metaTitle": "About Lora Gate — validated microclimate monitoring for GxP",
+      "metaDescription": "Lora Gate LLC — turnkey temperature and humidity monitoring systems with IQ/OQ/PQ validation for pharmaceutical and food enterprises."
     }
   }
 }

@@ -48,6 +48,9 @@ function lg_db() {
         object_type TEXT DEFAULT '',
         object_label TEXT DEFAULT '',
         q1 TEXT DEFAULT '', q2 TEXT DEFAULT '', q3 TEXT DEFAULT '',
+        topic TEXT DEFAULT '',
+        email TEXT DEFAULT '',
+        message TEXT DEFAULT '',
         lang TEXT DEFAULT 'ru',
         status TEXT DEFAULT 'new',
         audit_at INTEGER DEFAULT 0,
@@ -60,6 +63,10 @@ function lg_db() {
         created_at INTEGER DEFAULT 0,
         updated_at INTEGER DEFAULT 0
     )");
+    // Миграция для старых БД: колонки формы связи
+    foreach (array('topic', 'email', 'message') as $col) {
+        try { $pdo->exec("ALTER TABLE leads ADD COLUMN {$col} TEXT DEFAULT ''"); } catch (Exception $e) { /* уже есть */ }
+    }
     $pdo->exec("CREATE TABLE IF NOT EXISTS bot_state (
         tg_user_id INTEGER PRIMARY KEY,
         state TEXT DEFAULT '',
@@ -73,8 +80,8 @@ function lg_db() {
 function lg_save_lead($d) {
     $now = time();
     $st = lg_db()->prepare("INSERT INTO leads
-        (source,name,phone,username,tg_user_id,object_type,object_label,q1,q2,q3,lang,status,created_at,updated_at)
-        VALUES (:source,:name,:phone,:username,:tg_user_id,:object_type,:object_label,:q1,:q2,:q3,:lang,'new',:now,:now)");
+        (source,name,phone,username,tg_user_id,object_type,object_label,q1,q2,q3,topic,email,message,lang,status,created_at,updated_at)
+        VALUES (:source,:name,:phone,:username,:tg_user_id,:object_type,:object_label,:q1,:q2,:q3,:topic,:email,:message,:lang,'new',:now,:now)");
     $st->execute(array(
         ':source'      => isset($d['source']) ? $d['source'] : 'site',
         ':name'        => isset($d['name']) ? $d['name'] : '',
@@ -86,6 +93,9 @@ function lg_save_lead($d) {
         ':q1'          => isset($d['q1']) ? $d['q1'] : '',
         ':q2'          => isset($d['q2']) ? $d['q2'] : '',
         ':q3'          => isset($d['q3']) ? $d['q3'] : '',
+        ':topic'       => isset($d['topic']) ? $d['topic'] : '',
+        ':email'       => isset($d['email']) ? $d['email'] : '',
+        ':message'     => isset($d['message']) ? $d['message'] : '',
         ':lang'        => isset($d['lang']) ? $d['lang'] : 'ru',
         ':now'         => $now,
     ));
@@ -281,6 +291,29 @@ function lg_status_label($status) {
     return isset($s[$status]) ? $s[$status] : $status;
 }
 
+/** Карточка квиза из сырых данных (когда БД недоступна) */
+function lg_send_quiz_data($d) {
+    if (!lg_bot_configured()) return null;
+    $t = "🔔 <b>НОВАЯ ЗАЯВКА С САЙТА LORAGATE.UZ (КВИЗ-ВОРОНКА)</b>\n";
+    $t .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $t .= "👤 <b>Контактные данные:</b>\n";
+    $t .= "• Имя / Компания: " . lg_esc(isset($d['name']) ? $d['name'] : '-') . "\n";
+    $t .= "• Телефон: " . lg_esc(isset($d['phone']) ? $d['phone'] : '-') . "\n";
+    $t .= "• Тип объекта: " . lg_esc(isset($d['object_label']) ? $d['object_label'] : '-') . "\n\n";
+    $t .= "📊 <b>Ответы на тест:</b>\n";
+    $t .= "1. Способ учета: " . lg_esc(isset($d['q1']) ? $d['q1'] : '-') . "\n";
+    $t .= "2. При сбое ночью/выходные: " . lg_esc(isset($d['q2']) ? $d['q2'] : '-') . "\n";
+    $t .= "3. Валидационные документы: " . lg_esc(isset($d['q3']) ? $d['q3'] : '-') . "\n\n";
+    $t .= "🎯 <b>СТАТУС: Требуется бесплатный аудит GxP!</b>\n";
+    $t .= "━━━━━━━━━━━━━━━━━━━━━\n";
+    $t .= "📅 " . date('d.m.Y H:i');
+    $res = lg_send_text(LG_SALES_CHAT_ID, $t);
+    if (is_array($res) && isset($res['ok']) && $res['ok']) {
+        return isset($res['result']['message_id']) ? (int)$res['result']['message_id'] : 1;
+    }
+    return null;
+}
+
 /** Текст карточки лида (формат из ТЗ) */
 function lg_build_lead_text($lead) {
     $id = (int)$lead['id'];
@@ -313,11 +346,8 @@ function lg_build_lead_text($lead) {
 function lg_build_lead_keyboard($lead) {
     $id = (int)$lead['id'];
     $rows = array();
-    // Быстрый звонок
-    $digits = preg_replace('/\D/', '', $lead['phone']);
-    if ($digits !== '') {
-        $rows[] = array(array('text' => '📞 Быстрый звонок', 'url' => 'tel:+' . $digits));
-    }
+    // Номер телефона остаётся в тексте карточки — в мобильных клиентах он нажимается для звонка.
+    // (Кнопки url:// с tel: Telegram отклоняет с BUTTON_URL_INVALID.)
     // Написать в Telegram (если есть tg id / username)
     if ((int)$lead['tg_user_id'] > 0) {
         $rows[] = array(array('text' => '💬 Написать в Telegram', 'url' => 'tg://user?id=' . (int)$lead['tg_user_id']));
@@ -365,6 +395,37 @@ function lg_refresh_lead_card($leadId) {
     ));
 }
 
+/** Карточка лида из сырых данных формы (когда БД недоступна) */
+function lg_send_simple_lead_data($d) {
+    if (!lg_bot_configured()) return null;
+    $t = "🔔 <b>Новая заявка с сайта LORAGATE.UZ (форма связи)</b>\n";
+    $t .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $t .= "👤 Имя: " . lg_esc(isset($d['name']) ? $d['name'] : '-') . "\n";
+    $t .= "📞 Телефон: " . lg_esc(isset($d['phone']) ? $d['phone'] : '-') . "\n";
+    if (!empty($d['topic'])) {
+        $t .= "📋 Тема: " . lg_esc($d['topic']) . "\n";
+    }
+    if (!empty($d['email'])) {
+        $t .= "✉️ Email: " . lg_esc($d['email']) . "\n";
+    }
+    if (!empty($d['message'])) {
+        $t .= "💬 Сообщение: " . lg_esc(mb_substr($d['message'], 0, 500)) . "\n";
+    }
+    $t .= "\n🎯 <b>СТАТУС: Перезвонить клиенту!</b>\n";
+    $t .= "━━━━━━━━━━━━━━━━━━━━━\n";
+    $t .= "📅 " . date('d.m.Y H:i');
+    $rows = array();
+    $rows[] = array(
+        array('text' => '✅ В работу', 'callback_data' => 'lead:work:0'),
+        array('text' => '❌ Спам', 'callback_data' => 'lead:spam:0'),
+    );
+    $res = lg_send_text(LG_SALES_CHAT_ID, $t, lg_inline_kb($rows));
+    if (is_array($res) && isset($res['ok']) && $res['ok'] && isset($res['result']['message_id'])) {
+        return (int)$res['result']['message_id'];
+    }
+    return null;
+}
+
 /** Простая карточка лида с формы связи (имя + телефон) */
 function lg_send_simple_lead($leadId) {
     $lead = lg_get_lead($leadId);
@@ -373,16 +434,23 @@ function lg_send_simple_lead($leadId) {
     $t = "🔔 <b>Новая заявка с сайта LORAGATE.UZ (форма связи)</b> #{$id}\n";
     $t .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
     $t .= "👤 Имя: " . lg_esc($lead['name']) . "\n";
-    $t .= "📞 Телефон: " . lg_esc($lead['phone']) . "\n\n";
+    $t .= "📞 Телефон: " . lg_esc($lead['phone']) . "\n";
+    if (isset($lead['topic']) && $lead['topic'] !== '') {
+        $t .= "📋 Тема: " . lg_esc($lead['topic']) . "\n";
+    }
+    if (isset($lead['email']) && $lead['email'] !== '') {
+        $t .= "✉️ Email: " . lg_esc($lead['email']) . "\n";
+    }
+    if (isset($lead['message']) && $lead['message'] !== '') {
+        $t .= "💬 Сообщение: " . lg_esc(mb_substr($lead['message'], 0, 500)) . "\n";
+    }
+    $t .= "\n";
     $t .= "🎯 <b>СТАТУС: Перезвонить клиенту!</b>\n";
     $t .= "━━━━━━━━━━━━━━━━━━━━━\n";
     $t .= "📅 " . date('d.m.Y H:i', (int)$lead['created_at']) . "\n";
     $t .= "📌 Статус: " . lg_status_label($lead['status']);
     $rows = array();
-    $digits = preg_replace('/\D/', '', $lead['phone']);
-    if ($digits !== '') {
-        $rows[] = array(array('text' => '📞 Позвонить', 'url' => 'tel:+' . $digits));
-    }
+    // Номер телефона остаётся в тексте карточки — в мобильных клиентах он нажимается для звонка.
     if ((int)$lead['tg_user_id'] > 0) {
         $rows[] = array(array('text' => '💬 Написать в Telegram', 'url' => 'tg://user?id=' . (int)$lead['tg_user_id']));
     }

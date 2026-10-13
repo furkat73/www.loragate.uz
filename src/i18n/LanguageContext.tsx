@@ -7,12 +7,13 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import { getByPath, translations, type Language } from './translations'
+import { getByPath, getByPathList, translations, type Language } from './translations'
 
 type LanguageContextValue = {
   language: Language
   setLanguage: (lang: Language) => void
   t: (path: string) => string
+  tList: (path: string) => unknown[]
 }
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined)
@@ -40,9 +41,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     [language],
   )
 
+  const tList = useCallback(
+    (path: string) => getByPathList(translations[language], path),
+    [language],
+  )
+
   const value = useMemo(
-    () => ({ language, setLanguage, t }),
-    [language, setLanguage, t],
+    () => ({ language, setLanguage, t, tList }),
+    [language, setLanguage, t, tList],
   )
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>

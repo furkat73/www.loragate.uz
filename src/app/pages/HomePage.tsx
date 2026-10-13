@@ -1,8 +1,5 @@
 import { Hero } from '../components/Hero'
 import { TrustStrip } from '../components/TrustStrip'
-import { GmpSolution } from '../components/GmpSolution'
-import { Equipment } from '../components/Equipment'
-import { HowItWorks } from '../components/HowItWorks'
 import { ProcessSteps } from '../components/ProcessSteps'
 import { Benefits } from '../components/Benefits'
 import { AudienceSelector } from '../components/AudienceSelector'
@@ -17,11 +14,6 @@ export function HomePage(props: { onOpenQuiz: () => void }) {
     <>
       <Hero onOpenQuiz={props.onOpenQuiz} />
       <TrustStrip />
-      <GmpSolution />
-      <Equipment />
-      <Reveal>
-        <HowItWorks />
-      </Reveal>
       <ProcessSteps />
       <Benefits />
       <AudienceSelector />

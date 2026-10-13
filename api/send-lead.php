@@ -29,6 +29,9 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $name = isset($data['name']) ? mb_substr(trim($data['name']), 0, 120) : '';
 $phone = isset($data['phone']) ? mb_substr(trim($data['phone']), 0, 40) : '';
+$topic = isset($data['topic']) ? mb_substr(trim($data['topic']), 0, 120) : '';
+$email = isset($data['email']) ? mb_substr(trim($data['email']), 0, 120) : '';
+$message = isset($data['message']) ? mb_substr(trim($data['message']), 0, 2000) : '';
 $lang = (isset($data['lang']) && $data['lang'] === 'en') ? 'en' : ((isset($data['lang']) && $data['lang'] === 'uz') ? 'uz' : 'ru');
 $digits = preg_replace('/\D/', '', $phone);
 
@@ -43,24 +46,33 @@ if ($name === '' || strlen($digits) < 12) {
     exit;
 }
 
-// 1) Лид в БД
+// 1) Лид в БД (не блокирует отправку: если база недоступна — всё равно шлём в Telegram)
+$leadId = null;
 try {
     $leadId = lg_save_lead([
         'source' => 'contact-form',
         'name' => $name,
         'phone' => $phone,
+        'topic' => $topic,
+        'email' => $email,
+        'message' => $message,
         'lang' => $lang,
     ]);
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Ошибка сохранения заявки']);
-    exit;
+    $leadId = null;
 }
 
 // 2) Telegram
 $sent = false;
 if (lg_bot_configured()) {
-    $sent = lg_send_simple_lead($leadId) !== null;
+    if ($leadId) {
+        $sent = lg_send_simple_lead($leadId) !== null;
+    } else {
+        $sent = lg_send_simple_lead_data([
+            'name' => $name, 'phone' => $phone,
+            'topic' => $topic, 'email' => $email, 'message' => $message,
+        ]) !== null;
+    }
 }
 
 // 3) Fallback: письмо, если Telegram не настроен или не отправился
@@ -68,13 +80,17 @@ if (!$sent) {
     $to = lg_env('QUIZ_NOTIFY_EMAIL') !== '' ? lg_env('QUIZ_NOTIFY_EMAIL') : 'fkurganbaev@gmail.com';
     $safe = function ($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); };
     $date = date('d.m.Y H:i');
+    $tag = $leadId ? "#{$leadId}" : date('d.m.Y H:i');
     $html = "<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body style='font-family:Arial,sans-serif;color:#333'>"
         . "<div style='max-width:600px;margin:0 auto'>"
         . "<div style='background:#1d4ed8;color:#fff;padding:16px 20px;border-radius:8px 8px 0 0'>"
-        . "<h2 style='margin:0'>Новая заявка с формы связи #{$leadId}</h2></div>"
+        . "<h2 style='margin:0'>Новая заявка с формы связи {$tag}</h2></div>"
         . "<div style='background:#f9fafb;padding:20px;border:1px solid #e5e7eb'>"
         . "<p><b>Имя:</b> {$safe($name)}</p>"
         . "<p><b>Телефон:</b> <a href='tel:+{$safe($digits)}'>{$safe($phone)}</a></p>"
+        . ($topic !== '' ? "<p><b>Тема:</b> {$safe($topic)}</p>" : "")
+        . ($email !== '' ? "<p><b>Email:</b> {$safe($email)}</p>" : "")
+        . ($message !== '' ? "<p><b>Сообщение:</b> " . nl2br($safe($message)) . "</p>" : "")
         . "<hr><p style='color:#b91c1c'><b>Перезвоните клиенту!</b></p>"
         . "<p style='color:#6b7280;font-size:12px'>Дата: {$date}</p>"
         . "</div></div></body></html>";
@@ -84,7 +100,7 @@ if (!$sent) {
         'From: LORA GATE <noreply@loragate.uz>',
         'X-Mailer: PHP/' . phpversion(),
     ]);
-    $sent = @mail($to, "Новая заявка с формы связи #{$leadId} — {$name}", $html, $headers);
+    $sent = @mail($to, "Новая заявка с формы связи {$tag} — {$name}", $html, $headers);
 }
 
 if ($sent) {

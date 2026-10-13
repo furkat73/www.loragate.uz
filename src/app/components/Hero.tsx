@@ -2,7 +2,6 @@ import { ArrowRight, FileCheck } from 'lucide-react'
 import { useLanguage } from '@/i18n/LanguageContext'
 import { useAnalytics } from '@/lib/site'
 import { Button } from '@/components/ui/button'
-import { ImageWithFallback } from '@/components/ui/ImageWithFallback'
 import { useRoute } from '@/lib/router'
 
 type Props = {
@@ -45,21 +44,20 @@ export function Hero({ onOpenQuiz }: Props) {
       <div className="absolute bottom-0 left-0 z-0 h-64 w-64 rounded-full bg-violet-200/20 blur-3xl sm:h-96 sm:w-96" />
 
       <div className="relative z-10 container mx-auto max-w-7xl px-4">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-        <div className="space-y-4 text-left sm:space-y-5">
+        <div className="mx-auto max-w-4xl space-y-4 text-center sm:space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-indigo-200 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-sm">
               <span className="h-1.5 w-1.5 flex-shrink-0 animate-pulse rounded-full bg-indigo-600 sm:h-2 sm:w-2" />
               <span className="break-words">{t('hero.badge')}</span>
             </div>
 
-            <h1 className="text-2xl leading-tight font-bold text-white drop-shadow-md sm:text-3xl md:text-4xl lg:text-5xl">
+            <h1 className="mx-auto max-w-5xl text-2xl leading-tight font-bold text-balance text-white drop-shadow-md sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
               {t('hero.title')}
             </h1>
-            <p className="max-w-3xl text-base leading-relaxed text-gray-200 sm:text-lg">
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-200 sm:text-lg">
               {t('hero.description')}
             </p>
 
-            <div className="flex flex-col flex-wrap gap-3 pt-2 sm:flex-row sm:justify-start sm:gap-4 sm:pt-4">
+            <div className="flex flex-col flex-wrap gap-3 pt-2 sm:flex-row sm:justify-center sm:gap-4 sm:pt-4">
               <button
                 type="button"
                 onClick={() => {
@@ -113,36 +111,7 @@ export function Hero({ onOpenQuiz }: Props) {
                 </div>
               ))}
             </div>
-
-            <div className="grid max-w-2xl grid-cols-3 gap-2 pt-4 sm:gap-4 sm:pt-6">
-              {[
-                { v: '150+', l: t('hero.statsClients') },
-                { v: '99.9%', l: t('hero.statsReliability') },
-                { v: '24/7', l: t('hero.statsSupport') },
-              ].map((s) => (
-                <div
-                  key={s.l}
-                  className="rounded-lg border border-gray-100 bg-white p-2 text-center shadow-sm sm:p-4"
-                >
-                  <div className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-lg font-bold text-transparent sm:text-2xl">
-                    {s.v}
-                  </div>
-                  <div className="mt-1 text-[10px] text-gray-600 sm:text-xs">{s.l}</div>
-                </div>
-              ))}
-            </div>
           </div>
-
-          <div className="relative">
-            <div className="overflow-hidden rounded-xl border-4 border-white shadow-2xl shadow-blue-950/50 ring-1 ring-white/10 sm:rounded-2xl sm:border-8">
-              <ImageWithFallback
-                src="/images/dashboard.png"
-                alt="Дашборд системы мониторинга температуры и влажности Lora Gate"
-                className="h-auto w-full"
-              />
-            </div>
-          </div>
-        </div>
       </div>
       <div
         aria-hidden="true"

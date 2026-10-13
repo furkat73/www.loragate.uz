@@ -16,3 +16,13 @@ export function getByPath(obj: unknown, path: string): string {
 
   return typeof value === 'string' ? value : path
 }
+
+export function getByPathList<T>(obj: unknown, path: string): T[] {
+  const value = path.split('.').reduce<unknown>((acc, key) => {
+    if (acc && key in (acc as Record<string, unknown>)) {
+      return (acc as Record<string, unknown>)[key]
+    }
+    return undefined
+  }, obj)
+  return Array.isArray(value) ? value : []
+}

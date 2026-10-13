@@ -67,7 +67,8 @@ $a2 = isset($answers['q2']) ? mb_substr($answers['q2'], 0, 300) : '-';
 $a3 = isset($answers['q3']) ? mb_substr($answers['q3'], 0, 300) : '-';
 $date = date('d.m.Y H:i');
 
-// ---------- 1) Лид в БД ----------
+// ---------- 1) Лид в БД (не блокирует отправку при недоступной базе) ----------
+$leadId = null;
 try {
     $leadId = lg_save_lead([
         'source' => 'site',
@@ -79,9 +80,7 @@ try {
         'lang' => $lang,
     ]);
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Ошибка сохранения заявки']);
-    exit;
+    $leadId = null;
 }
 
 // ---------- 2) Письмо на рабочую почту ----------
@@ -135,9 +134,17 @@ if ($crmUrl !== '') {
     curl_close($ch);
 }
 
-// ---------- 4) Telegram-дубль — только если настроен токен (этап 2) ----------
+// ---------- 4) Telegram-карточка (приоритетный канал) ----------
+$tgSent = false;
 if (lg_bot_configured()) {
-    lg_send_lead_card($leadId);
+    if ($leadId) {
+        $tgSent = lg_send_lead_card($leadId) !== null;
+    } else {
+        $tgSent = lg_send_quiz_data([
+            'name' => $name, 'phone' => $phone, 'object_label' => $objectLabel,
+            'q1' => $a1, 'q2' => $a2, 'q3' => $a3,
+        ]) !== null;
+    }
 }
 
-echo json_encode(['success' => true, 'message' => 'Заявка отправлена', 'lead_id' => $leadId]);
+echo json_encode(['success' => true, 'message' => 'Заявка отправлена', 'lead_id' => $leadId, 'tg' => $tgSent]);

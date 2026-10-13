@@ -4,6 +4,8 @@
   
   # Handle Angular and React Router
   RewriteRule ^index\.html$ - [L]
+  # Старая версия сайта лежит в /old/ — отдаём как есть
+  RewriteRule ^old/ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]

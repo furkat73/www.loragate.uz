@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { BackToTop } from './components/BackToTop'
+import { OldSiteToggle } from './components/OldSiteToggle'
 import { QuizModal } from './components/QuizModal'
 import { Router, useRoute } from '@/lib/router'
 import { HomePage } from './pages/HomePage'
@@ -68,6 +69,7 @@ function Shell() {
       </main>
       <Footer />
       <BackToTop />
+      <OldSiteToggle />
       <QuizModal open={quizOpen} onClose={() => setQuizOpen(false)} />
     </div>
   )
